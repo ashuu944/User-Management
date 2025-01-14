@@ -103,6 +103,7 @@ public class RegionService {
             Region reg = repo.save(row);
             GetRegionDto response = modelMapperR.map(reg, GetRegionDto.class);
             response.setRegAreaId(reg.getRegionArea().getRegionAreaId());
+            response.setRegionAreaName(reg.getRegionArea().getRegionAreaName());
             return response;
 
         } else {
