@@ -1,0 +1,37 @@
+server:
+  port: 6060
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://192.168.0.171:5440/psmis_db?currentSchema=public
+    username: psmis
+    password: psmisDb@2025
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        #dialect: org.hibernate.dialect.SQLServerDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    show-sql: true
+
+log4j:
+  appender:
+    stdout: org.apache.log4j.ConsoleAppender
+    stdout.Target: System.out
+    stdout.layout: org.apache.log4j.PatternLayout
+    stdout.layout.ConversionPattern: "%d{HH:mm:ss,SSS} %-5p [%c] - %m%n"
+  logger:
+    org:
+      hibernate: info
+      hibernate.SQL: debug
+  rootLogger: info, stdout
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
