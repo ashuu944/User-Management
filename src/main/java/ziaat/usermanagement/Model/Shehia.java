@@ -4,17 +4,15 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.List;
-
 @Data
 @Table
 @Entity
-public class District {
+public class Shehia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long districtId;
+    private Long shehiaId;
     @Column(nullable = false, unique = true)
-    private String districtName;
+    private String shehiaName;
     @Column(nullable = false)
     private Long createdBy;
     @Column(nullable = false)
@@ -23,10 +21,6 @@ public class District {
     private boolean isActive;
 
     @ManyToOne()
-    @JoinColumn(name = "reg_id", nullable = false)
-    private Region region;
-
-    @OneToMany(mappedBy = "district")
-    private List<Shehia> shehia;
-
+    @JoinColumn(name = "district_id", nullable = false)
+    private District district;
 }
