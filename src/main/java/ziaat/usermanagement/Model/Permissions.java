@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Table
@@ -24,4 +25,7 @@ public class Permissions {
     @ManyToOne()
     @JoinColumn(name = "permission_cat_id", nullable = false)
     private PermissionCategory permissionCategory;
+
+    @OneToMany(mappedBy = "permissions")
+    private List<RolePermissions> rolePermissions;
 }

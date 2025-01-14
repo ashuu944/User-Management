@@ -4,17 +4,14 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @Table
 @Entity
-public class Roles {
+public class RolePermissions {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long roleId;
-    @Column(nullable = false, unique = true)
-    private String roleName;
+    private Long rolePermissionId;
     @Column(nullable = false)
     private Long createdBy;
     @Column(nullable = false)
@@ -22,7 +19,12 @@ public class Roles {
     @Column(nullable = false)
     private boolean isActive;
 
+    @ManyToOne()
+    @JoinColumn(name = "role_id", nullable = false)
+    private Roles roles;
 
-    @OneToMany(mappedBy = "roles")
-    private List<RolePermissions> rolePermissions;
+    @ManyToOne()
+    @JoinColumn(name = "permission_id", nullable = false)
+    private Permissions permissions;
+
 }
