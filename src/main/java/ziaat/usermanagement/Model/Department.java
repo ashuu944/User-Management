@@ -3,10 +3,10 @@ package ziaat.usermanagement.Model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
 @Data
 @Table
 @Entity

@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ziaat.usermanagement.Dto.UsersDto.GetUsersDto;
+import ziaat.usermanagement.Dto.UsersDto.GetUsersDto2;
 import ziaat.usermanagement.Dto.UsersDto.InsertUsersDto;
 import ziaat.usermanagement.Dto.UsersDto.UpdateUsersDto;
 import ziaat.usermanagement.Model.*;
@@ -30,7 +31,7 @@ public class UsersService {
 
 
 
-    public GetUsersDto insertUsers(InsertUsersDto req) {
+    public GetUsersDto2 insertUsers(InsertUsersDto req) {
         Optional<Department> dept = dept_repo.findById(req.getDepartmentId());
         Optional<Designation> des = desg_repo.findById(req.getDesignationId());
         Optional<Shehia> shehia = shehia_repo.findById(req.getShehiaId());
@@ -46,17 +47,20 @@ public class UsersService {
         resp.setCreateAt(LocalDateTime.now());
         resp.setActive(true);
         Users row = repo.save(resp);
-        GetUsersDto response = modelMapperR.map(row, GetUsersDto.class);
+        System.out.println("Mapped Users entity: " + resp);
+        //GetUsersDto2 response = modelMapperR.map(row, GetUsersDto2.class);
+        GetUsersDto2 response = modelMapperR.map(row, GetUsersDto2.class);
         response.setDepartmentId(row.getDepartment().getDeptId());
         response.setDepartmentName(row.getDepartment().getDeptName());
         response.setDesignationId(row.getDesignation().getDesignationId());
         response.setDesignationName(row.getDesignation().getDesignationName());
+//        response.setIdTypeId(row.getIdType().getIdTypeId());
+//        response.setIdName(row.getIdType().getIdName());
         response.setShehiaId(row.getShehia().getShehiaId());
         response.setShehiaName(row.getShehia().getShehiaName());
-        response.setIdTypeId(row.getIdType().getIdTypeId());
-        response.setIdTypeName(row.getIdType().getIdName());
+//
 
-        return response ;
+            return response ;
 
     }
 
@@ -66,34 +70,34 @@ public class UsersService {
         List<GetUsersDto> response = new ArrayList<>();
         for (Users row : rowlist) {
             GetUsersDto resp = modelMapper.map(row, GetUsersDto.class);
-            resp.setDepartmentId(row.getDepartment().getDeptId());
-            resp.setDepartmentName(row.getDepartment().getDeptName());
-            resp.setDesignationId(row.getDesignation().getDesignationId());
-            resp.setDesignationName(row.getDesignation().getDesignationName());
-            resp.setShehiaId(row.getShehia().getShehiaId());
-            resp.setShehiaName(row.getShehia().getShehiaName());
-            resp.setIdTypeId(row.getIdType().getIdTypeId());
-            resp.setIdTypeName(row.getIdType().getIdName());
+//            resp.setDepartmentId(row.getDepartment().getDeptId());
+//            resp.setDepartmentName(row.getDepartment().getDeptName());
+//            resp.setDesignationId(row.getDesignation().getDesignationId());
+//            resp.setDesignationName(row.getDesignation().getDesignationName());
+//            resp.setShehiaId(row.getShehia().getShehiaId());
+//            resp.setShehiaName(row.getShehia().getShehiaName());
+           // resp.setIdTypeId(row.getIdType().getIdTypeId());
+           // resp.setIdName(row.getIdType().getIdName());
 
             response.add(resp);
         }
         return response;
     }
 
-    public List<GetUsersDto> getAllActiveUsers() {
+    public List<GetUsersDto2> getAllActiveUsers() {
         List<Users> rowlist = repo.findByIsActive(true);
         ModelMapper modelMapper = new ModelMapper();
-        List<GetUsersDto> response = new ArrayList<>();
+        List<GetUsersDto2> response = new ArrayList<>();
         for (Users row : rowlist) {
-            GetUsersDto resp = modelMapper.map(row, GetUsersDto.class);
+            GetUsersDto2 resp = modelMapper.map(row, GetUsersDto2.class);
             resp.setDepartmentId(row.getDepartment().getDeptId());
             resp.setDepartmentName(row.getDepartment().getDeptName());
             resp.setDesignationId(row.getDesignation().getDesignationId());
             resp.setDesignationName(row.getDesignation().getDesignationName());
             resp.setShehiaId(row.getShehia().getShehiaId());
             resp.setShehiaName(row.getShehia().getShehiaName());
-            resp.setIdTypeId(row.getIdType().getIdTypeId());
-            resp.setIdTypeName(row.getIdType().getIdName());
+//            resp.setIdTypeId(row.getIdType().getIdTypeId());
+//            resp.setIdName(row.getIdType().getIdName());
             response.add(resp);
         }
         return response;
@@ -115,7 +119,7 @@ public class UsersService {
             resp.setShehiaId(row.getShehia().getShehiaId());
             resp.setShehiaName(row.getShehia().getShehiaName());
             resp.setIdTypeId(row.getIdType().getIdTypeId());
-            resp.setIdTypeName(row.getIdType().getIdName());
+            resp.setIdName(row.getIdType().getIdName());
             return resp;
         } else {
             return null;
@@ -151,7 +155,7 @@ public class UsersService {
             resp.setShehiaId(row.getShehia().getShehiaId());
             resp.setShehiaName(row.getShehia().getShehiaName());
             resp.setIdTypeId(row.getIdType().getIdTypeId());
-            resp.setIdTypeName(row.getIdType().getIdName());
+            resp.setIdName(row.getIdType().getIdName());
             return resp;
 
         } else {

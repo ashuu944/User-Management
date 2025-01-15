@@ -23,7 +23,7 @@ public class GetUsersDto {
     private Long designationId;
     private String designationName;
     private Long idTypeId;
-    private String idTypeName;
+    private String idName;
     private Long shehiaId;
     private String shehiaName;
     private Long createdBy;

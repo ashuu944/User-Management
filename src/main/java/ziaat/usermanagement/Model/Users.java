@@ -2,13 +2,16 @@ package ziaat.usermanagement.Model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Table
 @Entity
+@ToString(exclude = {"department", "designation", "shehia", "idType"})
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,5 +55,10 @@ public class Users {
     @ManyToOne
     @JoinColumn(name = "shehia_id", nullable = true)
     private Shehia shehia;
+
+    @OneToMany(mappedBy = "users")
+    private List<UserAccount> userAccount;
+
+
 
 }

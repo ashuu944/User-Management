@@ -25,4 +25,7 @@ public class Roles {
 
     @OneToMany(mappedBy = "roles")
     private List<RolePermissions> rolePermissions;
+
+    @OneToMany(mappedBy = "roles")
+    private List<UserAccount> userAccount;
 }

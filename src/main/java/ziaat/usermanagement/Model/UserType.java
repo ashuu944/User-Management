@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Table
@@ -21,4 +22,7 @@ public class UserType {
     private LocalDateTime createAt;
     @Column(nullable = false)
     private boolean isActive;
+
+    @OneToMany(mappedBy = "userType")
+    private List<UserAccount> userAccount;
 }

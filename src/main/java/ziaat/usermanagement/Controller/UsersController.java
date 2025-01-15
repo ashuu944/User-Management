@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import ziaat.usermanagement.Dto.UserTypeDto.GetUserTypeDto;
 import ziaat.usermanagement.Dto.UserTypeDto.InsertUserTypeDto;
 import ziaat.usermanagement.Dto.UsersDto.GetUsersDto;
+import ziaat.usermanagement.Dto.UsersDto.GetUsersDto2;
 import ziaat.usermanagement.Dto.UsersDto.InsertUsersDto;
 import ziaat.usermanagement.Dto.UsersDto.UpdateUsersDto;
 import ziaat.usermanagement.Service.UserTypeService;
@@ -23,7 +24,7 @@ public class UsersController {
     private MessageResult messageResult;
 
     @PostMapping("/users")
-    public GetUsersDto insertUsers (@RequestBody InsertUsersDto req){
+    public GetUsersDto2 insertUsers (@RequestBody InsertUsersDto req){
         return service.insertUsers(req);
     }
 
@@ -33,7 +34,7 @@ public class UsersController {
     }
 
     @GetMapping("/activeUsers")
-    public List<GetUsersDto> getAllActiveUsers(){
+    public List<GetUsersDto2> getAllActiveUsers(){
         return service.getAllActiveUsers();
     }
 
