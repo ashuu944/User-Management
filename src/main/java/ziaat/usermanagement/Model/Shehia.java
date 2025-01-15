@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
 @Data
 @Table
 @Entity
@@ -23,4 +25,7 @@ public class Shehia {
     @ManyToOne()
     @JoinColumn(name = "district_id", nullable = false)
     private District district;
+
+    @OneToMany(mappedBy = "shehia")
+    private List<Users> users;
 }

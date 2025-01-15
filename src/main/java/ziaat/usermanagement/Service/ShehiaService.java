@@ -29,6 +29,7 @@ public class ShehiaService {
         ModelMapper modelMapper = new ModelMapper();
         ModelMapper modelMapperR = new ModelMapper();
         Shehia resp = modelMapper.map(req, Shehia.class);
+        resp.setShehiaId(null);
         resp.setDistrict(reg.get());
         resp.setCreateAt(LocalDateTime.now());
         resp.setActive(true);

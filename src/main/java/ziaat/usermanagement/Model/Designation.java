@@ -22,6 +22,7 @@ public class Designation {
     @Column(nullable = false)
     private boolean isActive;
 
+
     @OneToMany(mappedBy = "designation")
-    private List<Users> Users;
+    private List<Users> users;
 }

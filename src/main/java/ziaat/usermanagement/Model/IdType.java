@@ -23,6 +23,6 @@ public class IdType {
     private boolean isActive;
 
     @OneToMany(mappedBy = "idType")
-    private List<Users> Users;
+    private List<Users> users;
 
 }

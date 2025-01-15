@@ -23,6 +23,6 @@ public class PermissionCategory {
     private boolean isActive;
 
     @OneToMany(mappedBy = "permissionCategory")
-    private List<Permissions> Permission;
+    private List<Permissions> Permissions;
 
 }

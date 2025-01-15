@@ -24,5 +24,5 @@ public class Department {
     private boolean isActive;
 
     @OneToMany(mappedBy = "department")
-    private List<Users> Users;
+    private List<Users> users;
 }

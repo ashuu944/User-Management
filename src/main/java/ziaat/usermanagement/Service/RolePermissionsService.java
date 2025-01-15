@@ -31,6 +31,7 @@ public class RolePermissionsService {
         ModelMapper modelMapper = new ModelMapper();
         ModelMapper modelMapperR = new ModelMapper();
         RolePermissions resp = modelMapper.map(req, RolePermissions.class);
+        resp.setRolePermissionId(null);
         resp.setRoles(roles.get());
         resp.setPermissions(permissions.get());
         resp.setCreateAt(LocalDateTime.now());

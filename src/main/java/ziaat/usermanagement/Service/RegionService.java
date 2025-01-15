@@ -30,6 +30,7 @@ public class RegionService {
         ModelMapper modelMapper = new ModelMapper();
         ModelMapper modelMapperR = new ModelMapper();
         Region resp = modelMapper.map(req, Region.class);
+        resp.setRegionId(null);
         resp.setRegionArea(regArea.get());
         resp.setCreateAt(LocalDateTime.now());
         resp.setActive(true);

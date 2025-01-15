@@ -29,6 +29,7 @@ public class DistrictService {
         ModelMapper modelMapper = new ModelMapper();
         ModelMapper modelMapperR = new ModelMapper();
         District resp = modelMapper.map(req, District.class);
+        resp.setDistrictId(null);
         resp.setRegion(reg.get());
         resp.setCreateAt(LocalDateTime.now());
         resp.setActive(true);
